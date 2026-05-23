@@ -1,58 +1,76 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Will You Be My Valentine?</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Will Alya Spend The Rest Of Her Life With Zaahid? 💍❤️</title>
 
 <style>
-body{
+body {
     font-family: Arial, sans-serif;
-    text-align:center;
-    margin-top:100px;
+    text-align: center;
+    margin-top: 100px;
+    overflow: hidden;
 }
 
-button{
-    padding:15px 30px;
-    font-size:20px;
-    margin:10px;
-    cursor:pointer;
+h1 {
+    color: #ff4d6d;
+    padding: 20px;
 }
 
-#yes{
-    background:#4CAF50;
-    color:white;
+button {
+    padding: 15px 30px;
+    font-size: 20px;
+    margin: 10px;
+    cursor: pointer;
+    border: none;
+    border-radius: 10px;
 }
 
-#no{
-    background:#f44336;
-    color:white;
-    position:absolute;
+#yes {
+    background: #4CAF50;
+    color: white;
+}
+
+#no {
+    background: #f44336;
+    color: white;
+    position: absolute;
 }
 </style>
 </head>
 
 <body>
 
-<h1>Will Alya spent the rest of her life with Zaahid 💍 ❤️</h1>
+<h1>Will Alya spend the rest of her life with Zaahid? 💍❤️</h1>
 
-<button id="yYESSSSSSSSSSS">Yes 💖</button>
-<button id="nNOPE - hehe">No 😢</button>
+<button id="yes">YES! 💖</button>
+<button id="no">No 😢</button>
 
 <script>
 const noBtn = document.getElementById("no");
+const yesBtn = document.getElementById("yes");
 
-noBtn.addEventListener("mouseover", () => {
-    const x = Math.random() * (window.innerWidth - 150);
-    const y = Math.random() * (window.innerHeight - 80);
+function moveButton() {
+    const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+    const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
 
     noBtn.style.left = x + "px";
     noBtn.style.top = y + "px";
-});
+}
 
-document.getElementById("yes").onclick = () => {
-    document.body.innerHTML =
-        "<h1>Yay! ❤️ Thank you!</h1>";
-};
+noBtn.addEventListener("mouseover", moveButton);
+noBtn.addEventListener("click", moveButton);
+
+yesBtn.addEventListener("click", () => {
+    document.body.innerHTML = `
+        <div style="margin-top:150px;">
+            <h1>🎉 SHE SAID YES! 🎉</h1>
+            <h2>💍 Alya & Zaahid Forever ❤️</h2>
+            <p>Can't wait to spend the rest of our lives together! 🥰</p>
+        </div>
+    `;
+});
 </script>
 
 </body>
