@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ON Tak ON Bola Male Raye? ⚽</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial,sans-serif;
+    text-align:center;
+    overflow:hidden;
+    height:100vh;
+
+    background:
+    linear-gradient(rgba(0,0,0,0.45),rgba(0,0,0,0.45)),
+    url("stadium.jpg");
+
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+
+    color:white;
+}
+
+.container{
+    margin-top:90px;
+    padding:20px;
+}
+
+h1{
+    font-size:3rem;
+    text-shadow:3px 3px 10px black;
+}
+
+p{
+    margin-top:20px;
+    font-size:1.3rem;
+    line-height:1.8;
+}
+
+#countdown{
+    margin-top:25px;
+    font-size:1.8rem;
+    font-weight:bold;
+    color:#ffd700;
+    text-shadow:2px 2px 5px black;
+}
+
+button{
+    padding:15px 35px;
+    font-size:22px;
+    border:none;
+    border-radius:15px;
+    cursor:pointer;
+    margin:15px;
+}
+
+#yes{
+    background:#28a745;
+    color:white;
+    transition:.3s;
+}
+
+#yes:hover{
+    transform:scale(1.1);
+}
+
+#no{
+    background:#dc3545;
+    color:white;
+    position:absolute;
+}
+
+.ball{
+    position:absolute;
+    font-size:35px;
+    animation:floatUp linear infinite;
+}
+
+.ultras{
+    position:absolute;
+    font-size:28px;
+    animation:floatUp linear infinite;
+}
+
+@keyframes floatUp{
+
+    from{
+        transform:translateY(110vh);
+        opacity:1;
+    }
+
+    to{
+        transform:translateY(-120px);
+        opacity:0;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>⚽ ON Tak ON Bola Male Raye? ⚽</h1>
+
+<p>
+Ejah peramai sep kito 😎<br>
+Nok temu mato tkpo doh.<br>
+Dulu suko dulu 🔥
+</p>
+
+<div id="countdown">
+⏳ Loading...
+</div>
+
+<br>
+
+<button id="yes">On Sobat 🔥</button>
+<button id="no">Dok Sey 😢</button>
+
+</div>
+
+<script>
+
+/* ==========================
+   BOLA TERAPUNG
+========================== */
+
+for(let i=0;i<15;i++){
+
+    const ball=document.createElement("div");
+
+    ball.className="ball";
+    ball.innerHTML="⚽";
+
+    ball.style.left=Math.random()*100+"vw";
+    ball.style.animationDuration=(5+Math.random()*8)+"s";
+
+    document.body.appendChild(ball);
+}
+
+/* ==========================
+   ULTRAS / PENYOKONG
+========================== */
+
+const supporterIcons=[
+    "🚩",
+    "🏴",
+    "📣",
+    "🥁",
+    "🙌",
+    "👏"
+];
+
+for(let i=0;i<25;i++){
+
+    const ultra=document.createElement("div");
+
+    ultra.className="ultras";
+
+    ultra.innerHTML=
+        supporterIcons[
+            Math.floor(
+                Math.random()*supporterIcons.length
+            )
+        ];
+
+    ultra.style.left=Math.random()*100+"vw";
+    ultra.style.animationDuration=(6+Math.random()*8)+"s";
+
+    document.body.appendChild(ultra);
+}
+
+/* ==========================
+   BUTANG DOK SEY LARI
+========================== */
+
+const noBtn=document.getElementById("no");
+const yesBtn=document.getElementById("yes");
+
+noBtn.style.left="58%";
+noBtn.style.top="360px";
+
+function moveButton(){
+
+    const x=
+        Math.random()*
+        (window.innerWidth-noBtn.offsetWidth);
+
+    const y=
+        Math.random()*
+        (window.innerHeight-noBtn.offsetHeight);
+
+    noBtn.style.left=x+"px";
+    noBtn.style.top=y+"px";
+}
+
+noBtn.addEventListener("mouseover",moveButton);
+noBtn.addEventListener("touchstart",moveButton);
+noBtn.addEventListener("click",moveButton);
+
+/* ==========================
+   COUNTDOWN KE 9 MALAM
+========================== */
+
+const countdown=
+document.getElementById("countdown");
+
+function updateCountdown(){
+
+    const now=new Date();
+
+    let target=new Date();
+
+    target.setHours(21,0,0,0);
+
+    if(now>target){
+        target.setDate(target.getDate()+1);
+    }
+
+    const diff=target-now;
+
+    const hours=
+        Math.floor(diff/(1000*60*60));
+
+    const minutes=
+        Math.floor(
+        (diff%(1000*60*60))/(1000*60));
+
+    const seconds=
+        Math.floor(
+        (diff%(1000*60))/1000);
+
+    countdown.innerHTML=
+        `⏳ Lagi ${hours}j ${minutes}m ${seconds}s ke match`;
+}
+
+setInterval(updateCountdown,1000);
+updateCountdown();
+
+/* ==========================
+   ON SOBAT
+========================== */
+
+yesBtn.addEventListener("click",()=>{
+
+document.body.innerHTML=`
+
+<div style="
+margin-top:120px;
+text-align:center;
+color:white;
+">
+
+<h1>🏟️ STADIUM SULTAN MUHAMMAD IV 🏟️</h1>
+
+<br>
+
+<h2>⚽ MATCHDAY IS ON ⚽</h2>
+
+<br>
+
+<h2>📣 Jumpa Male Raya Kol 9 📣</h2>
+
+<p>🔥 Team cukup. Tinggal demo jah lagi!</p>
+
+<p>🥁🥁🥁 ULTRAS KITO READY 🥁🥁🥁</p>
+
+</div>
+
+`;
+
+const icons=[
+    "🚩",
+    "🏴",
+    "📣",
+    "🙌",
+    "👏",
+    "🔥",
+    "⚽",
+    "🥁"
+];
+
+for(let i=0;i<400;i++){
+
+    const confetti=document.createElement("div");
+
+    confetti.innerHTML=
+        icons[
+            Math.floor(
+                Math.random()*icons.length
+            )
+        ];
+
+    confetti.style.position="absolute";
+    confetti.style.left=Math.random()*100+"vw";
+    confetti.style.top="-50px";
+
+    confetti.style.fontSize=
+        (20+Math.random()*25)+"px";
+
+    document.body.appendChild(confetti);
+
+    let pos=-50;
+
+    const fall=setInterval(()=>{
+
+        pos+=5;
+
+        confetti.style.top=pos+"px";
+
+        if(pos>window.innerHeight){
+            clearInterval(fall);
+        }
+
+    },20);
+}
+
+});
+
+</script>
+
+</body>
+</html>
